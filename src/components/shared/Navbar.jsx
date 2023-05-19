@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/1.png"
+import { DataProvider } from "../providers/AuthProvider";
 
 const Navbar = () => {
+  const {user} = useContext(DataProvider);
+  // console.log(user);
   return (
     <div className="navbar bg-base-100 my-6">
       <div className="navbar-start">
@@ -63,6 +66,35 @@ const Navbar = () => {
                 Blogs
               </NavLink>
             </li>
+            {
+            user ? <><li>
+            <NavLink
+              to="/addtoys"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-amber-700 hover:bg-amber-700 hover:text-white"
+                  : "hover:bg-amber-700 hover:text-white"
+              }
+            >
+              Add Toy
+            </NavLink>
+          </li></> : <></>
+          }
+          {
+            user ? <><li>
+            <NavLink
+              to="/mytoys"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-amber-700 hover:bg-amber-700 hover:text-white"
+                  : "hover:bg-amber-700 hover:text-white"
+              }
+            >
+              My Toy
+            </NavLink>
+          </li></> : <></>
+          }
+            
           </ul>
         </div>
         <img src={logo} className="w-14" alt="" />
@@ -108,15 +140,45 @@ const Navbar = () => {
               Blogs
             </NavLink>
           </li>
+          {
+            user ? <><li>
+            <NavLink
+              to="/addtoys"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-amber-700 hover:bg-amber-700 hover:text-white"
+                  : "hover:bg-amber-700 hover:text-white"
+              }
+            >
+              Add Toy
+            </NavLink>
+          </li></> : <></>
+          }
+          {
+            user ? <><li>
+            <NavLink
+              to="/mytoys"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-amber-700 hover:bg-amber-700 hover:text-white"
+                  : "hover:bg-amber-700 hover:text-white"
+              }
+            >
+              My Toy
+            </NavLink>
+          </li></> : <></>
+          }
         </ul>
       </div>
       <div className="navbar-end">
-        <Link
+        {
+          user ? <><button className="btn btn-outline btn-error">LogOut</button></> : <Link
           to="/login"
           className="btn btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white"
         >
           Login
         </Link>
+        }
       </div>
     </div>
   );

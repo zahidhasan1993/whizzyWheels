@@ -82,7 +82,7 @@ const Registration = () => {
                 <button className="btn w-full btn-outline text-green-700 hover:bg-green-700 hover:border-none hover:text-white mt-3">Register with google</button>
                 
               </div>
-              <p className="mt-6">All ready  have an account... <Link to='/login' className="text-blue-700">Login...</Link></p>
+              <p className="mt-6">All ready  have an account... <Link to='/login' className="text-blue-700">Login...Here...</Link></p>
             </form>
           </div>
         </div>
