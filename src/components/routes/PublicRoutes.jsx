@@ -5,6 +5,8 @@ import Main from "../layouts/Main";
 import Home from "../layouts/Home";
 import Login from "../authentication/Login";
 import Error from "../extra/Error";
+import Registration from "../authentication/Registration";
+import AllToys from "../extra/toys/AllToys";
 
 
 const router = createBrowserRouter([
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
             {
                 path: 'login',
                 element: <Login></Login>
+            },
+            {
+                path: 'register',
+                element: <Registration></Registration>
+            },
+            {
+                path: 'alltoys',
+                element: <AllToys></AllToys>
             }
         ]
     }
