@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useRouteError } from "react-router-dom";
 import Lottie from "react-lottie";
-import errorLottie from "../../assets/lotties/98642-error-404.json";
+import errorLottie from "../../assets/lotties/error.json";
 import { FaArrowLeft} from "react-icons/fa";
 
 

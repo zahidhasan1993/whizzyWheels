@@ -1,16 +1,16 @@
 import React from "react";
-import logo from "../../assets/images/1.png"
+import logo from "../../assets/images/1.png";
 
 const Footer = () => {
   return (
     <footer className="footer p-10 bg-base-100 text-base-content">
       <div>
-        
-        <img src={logo} alt="" className="w-20"/>
-        
-        
-        <p>Whizzy<span className="text-amber-700">Wheels</span> Industries Ltd.
-          <br /><br />
+        <img src={logo} alt="" className="w-20" />
+
+        <p>
+          Whizzy<span className="text-amber-700">Wheels</span> Industries Ltd.
+          <br />
+          <br />
           All rights reserved by Z@hid
         </p>
       </div>
