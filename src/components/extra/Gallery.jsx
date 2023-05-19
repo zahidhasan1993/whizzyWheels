@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,10 +10,11 @@ import "swiper/css/pagination";
 
 // import required modules
 import {
-  EffectCreative,
+  EffectFlip,
   EffectCards,
   EffectCoverflow,
   Pagination,
+  Navigation 
 } from "swiper";
 
 const Gallery = () => {
@@ -26,19 +27,12 @@ const Gallery = () => {
       <div className="md:grid md:grid-cols-2 md:gap-6">
         <div className="border border-amber-700 border-8">
           <Swiper
-            grabCursor={true}
-            effect={"creative"}
-            creativeEffect={{
-              prev: {
-                shadow: true,
-                tranamber: [0, 0, -400],
-              },
-              next: {
-                tranamber: ["100%", 0, 0],
-              },
-            }}
-            modules={[EffectCreative]}
-            className="mySwiper"
+             effect={"flip"}
+             grabCursor={true}
+             pagination={true}
+             navigation={true}
+             modules={[EffectFlip, Pagination, Navigation]}
+             className="mySwiper"
           >
             <SwiperSlide>
               <img
