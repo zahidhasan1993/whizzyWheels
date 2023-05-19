@@ -1,18 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/images/1.png"
+import logo from "../../assets/images/1.png";
 import { DataProvider } from "../providers/AuthProvider";
 
 const Navbar = () => {
-  const {user,logOut} = useContext(DataProvider);
+  const { user, logOut } = useContext(DataProvider);
+  const [hover,setHover] = useState(false);
+
+  const onHover = () => {
+    setHover(!hover);
+  }
 
   const handleLogout = () => {
     logOut()
-    .then(result => {
-
-    })
-    .catch()
-  }
+      .then((result) => {})
+      .catch();
+  };
   // console.log(user);
   return (
     <div className="navbar bg-base-100 my-6">
@@ -74,35 +77,42 @@ const Navbar = () => {
                 Blogs
               </NavLink>
             </li>
-            {
-            user ? <><li>
-            <NavLink
-              to="/addtoys"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-amber-700 hover:bg-amber-700 hover:text-white"
-                  : "hover:bg-amber-700 hover:text-white"
-              }
-            >
-              Add Toy
-            </NavLink>
-          </li></> : <></>
-          }
-          {
-            user ? <><li>
-            <NavLink
-              to="/mytoys"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-amber-700 hover:bg-amber-700 hover:text-white"
-                  : "hover:bg-amber-700 hover:text-white"
-              }
-            >
-              My Toy
-            </NavLink>
-          </li></> : <></>
-          }
-            
+            {user ? (
+              <>
+                <li>
+                  <NavLink
+                    to="/addtoys"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-amber-700 hover:bg-amber-700 hover:text-white"
+                        : "hover:bg-amber-700 hover:text-white"
+                    }
+                  >
+                    Add Toy
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
+            {user ? (
+              <>
+                <li>
+                  <NavLink
+                    to="/mytoys"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-amber-700 hover:bg-amber-700 hover:text-white"
+                        : "hover:bg-amber-700 hover:text-white"
+                    }
+                  >
+                    My Toy
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
         <img src={logo} className="w-14" alt="" />
@@ -148,45 +158,70 @@ const Navbar = () => {
               Blogs
             </NavLink>
           </li>
-          {
-            user ? <><li>
-            <NavLink
-              to="/addtoys"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-amber-700 hover:bg-amber-700 hover:text-white"
-                  : "hover:bg-amber-700 hover:text-white"
-              }
-            >
-              Add Toy
-            </NavLink>
-          </li></> : <></>
-          }
-          {
-            user ? <><li>
-            <NavLink
-              to="/mytoys"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-amber-700 hover:bg-amber-700 hover:text-white"
-                  : "hover:bg-amber-700 hover:text-white"
-              }
-            >
-              My Toy
-            </NavLink>
-          </li></> : <></>
-          }
+          {user ? (
+            <>
+              <li>
+                <NavLink
+                  to="/addtoys"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-amber-700 hover:bg-amber-700 hover:text-white"
+                      : "hover:bg-amber-700 hover:text-white"
+                  }
+                >
+                  Add Toy
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <></>
+          )}
+          {user ? (
+            <>
+              <li>
+                <NavLink
+                  to="/mytoys"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-amber-700 hover:bg-amber-700 hover:text-white"
+                      : "hover:bg-amber-700 hover:text-white"
+                  }
+                >
+                  My Toy
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <></>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
         {
-          user ? <><button onClick={handleLogout} className="btn btn-outline btn-error">LogOut</button></> : <Link
-          to="/login"
-          className="btn btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white"
-        >
-          Login
-        </Link>
+          hover ? <p className="mr-3">{user.displayName}</p> : <></>
         }
+        {user ? (
+          <>
+            <div className="avatar online mr-3" onMouseEnter={onHover} onMouseLeave={onHover}>
+              <div className="w-12 rounded-full">
+                <img src={user.photoURL} />
+              </div>
+            </div>{" "}
+            <button
+              onClick={handleLogout}
+              className="btn btn-outline btn-error"
+            >
+              LogOut
+            </button>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            className="btn btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

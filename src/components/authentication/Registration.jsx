@@ -12,7 +12,7 @@ const Registration = () => {
 
     TabTitle('Register | WhizzyWheels');
 
-    const {emailSignUp} = useContext(DataProvider)
+    const {emailSignUp,googleSignUp} = useContext(DataProvider)
 
 
     const defaultOptions = {
@@ -24,6 +24,26 @@ const Registration = () => {
         },
       };
 
+      const handleGoogleSignUp = () => {
+        googleSignUp()
+        .then(result => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'User sign up successful',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          .catch(error => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: error.message
+            })
+          })
+        })
+      }
+
       const handleRegistration = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -33,13 +53,6 @@ const Registration = () => {
         const photo = form.photo.value;
 
         console.log(name,email,password,photo);
-        if(password.length < 6){
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Password must be at least 6 character long'
-              })
-        }
 
         emailSignUp(email,password)
         .then(result => {
@@ -50,6 +63,7 @@ const Registration = () => {
                 showConfirmButton: false,
                 timer: 1500
               })
+              form.reset()
             // console.log(result.user);
         })
         .catch(error => {
@@ -58,6 +72,7 @@ const Registration = () => {
                 title: 'Oops...',
                 text: error.message
               })
+              form.reset()
             console.log(error.message);
 
         })
@@ -128,7 +143,7 @@ const Registration = () => {
               </div>
               <div className="form-control mt-6">
                 <button className="btn w-full btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white">Register</button>
-                <button className="btn w-full btn-outline text-green-700 hover:bg-green-700 hover:border-none hover:text-white mt-3">Register with google</button>
+                <button onClick={handleGoogleSignUp} className="btn w-full btn-outline text-green-700 hover:bg-green-700 hover:border-none hover:text-white mt-3">Register with google</button>
                 
               </div>
               <p className="mt-6">All ready  have an account... <Link to='/login' className="text-blue-700">Login...Here...</Link></p>
