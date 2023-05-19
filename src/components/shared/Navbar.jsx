@@ -4,7 +4,15 @@ import logo from "../../assets/images/1.png"
 import { DataProvider } from "../providers/AuthProvider";
 
 const Navbar = () => {
-  const {user} = useContext(DataProvider);
+  const {user,logOut} = useContext(DataProvider);
+
+  const handleLogout = () => {
+    logOut()
+    .then(result => {
+
+    })
+    .catch()
+  }
   // console.log(user);
   return (
     <div className="navbar bg-base-100 my-6">
@@ -172,7 +180,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {
-          user ? <><button className="btn btn-outline btn-error">LogOut</button></> : <Link
+          user ? <><button onClick={handleLogout} className="btn btn-outline btn-error">LogOut</button></> : <Link
           to="/login"
           className="btn btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white"
         >
