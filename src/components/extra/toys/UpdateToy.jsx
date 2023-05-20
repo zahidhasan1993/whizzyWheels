@@ -1,9 +1,42 @@
 import React from "react";
+import { TabTitle } from "../../changeTitle";
+import Swal from 'sweetalert2';
+import { useLoaderData } from "react-router-dom";
+
 
 const UpdateToy = () => {
-    const handleUpdateToy = (e) => {
+  TabTitle("UpdateToys | WhizzyWheels");
+  const toyData = useLoaderData();
+  const handleUpdateToy = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const price = form.price.value;
+    const available_quantity = form.quantity.value;
+    const details = form.details.value;
 
-    }
+    const updatedToy = { price, available_quantity, details };
+
+    console.log(toyData._id);
+
+    fetch(`http://localhost:5000/updatetoy/${toyData._id}`,{
+      method : "PUT",
+      headers : {
+        'content-type': 'application/json',
+      },
+      body : JSON.stringify(updatedToy)
+
+    })
+    .then(res => res.json())
+    .then(data => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Data updated successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content">
@@ -44,7 +77,7 @@ const UpdateToy = () => {
               </label>
               <input
                 type="text"
-                name="toydetails"
+                name="details"
                 placeholder="Toy Details"
                 className="input input-bordered"
               />
