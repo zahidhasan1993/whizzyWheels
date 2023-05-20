@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TabTitle } from "../../changeTitle";
 import { DataProvider } from "../../providers/AuthProvider";
+import Swal from 'sweetalert2'
 
 const AddToy = () => {
   TabTitle("addToys | WhizzyWheels");
-  const {user} = useContext(DataProvider);
+  const { user } = useContext(DataProvider);
 
   const handleAddToy = (e) => {
     e.preventDefault();
@@ -12,24 +13,57 @@ const AddToy = () => {
     const name = form.name.value;
     const sellerName = form.sellername.value;
     const sellerEmail = form.email.value;
-    const subcategory = form.subcategory.value;
+    const sub_category = form.subcategory.value;
     const price = form.price.value;
-    const ratings = form.rating.value;
-    const quantity = form.quantity.value;
-    const photoURL = form.toyphoto.value;
+    const rating = form.rating.value;
+    const available_quantity = form.quantity.value;
+    const picture = form.toyphoto.value;
 
-    const newToy = {name,sellerName,sellerEmail,subcategory,price,ratings,quantity,photoURL};
+    const newToy = {
+      name,
+      sellerName,
+      sellerEmail,
+      sub_category,
+      price,
+      rating,
+      available_quantity,
+      picture,
+    };
 
-    console.log(newToy);
-  }
+    fetch('http://localhost:5000/addtoy', {
+        method: "POST",
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(newToy)
+
+
+      })
+      .then(res => res.json())
+      .then(data => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Toy Added Successful',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        console.log(data);
+        form.reset();
+      })
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content">
-        
         <div className="card flex-shrink-0 w-full shadow-xl bg-base-100">
-        <h1 className="text-center my-7 text-3xl text-amber-700 font-semibold underline">Add Your Toy</h1>
-          <form onSubmit={handleAddToy} className="card-body md:grid md:grid-cols-2">
+          <h1 className="text-center my-7 text-3xl text-amber-700 font-semibold underline">
+            Add Your Toy
+          </h1>
+          <form
+            onSubmit={handleAddToy}
+            className="card-body md:grid md:grid-cols-2"
+          >
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -52,7 +86,6 @@ const AddToy = () => {
                 defaultValue={user?.displayName}
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control">
               <label className="label">
@@ -65,7 +98,6 @@ const AddToy = () => {
                 defaultValue={user?.email}
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control">
               <label className="label">
@@ -77,7 +109,6 @@ const AddToy = () => {
                 placeholder="Sub Category Name"
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control">
               <label className="label">
@@ -89,7 +120,6 @@ const AddToy = () => {
                 placeholder="Toy Price"
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control">
               <label className="label">
@@ -101,7 +131,6 @@ const AddToy = () => {
                 placeholder="Rating"
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control">
               <label className="label">
@@ -113,7 +142,6 @@ const AddToy = () => {
                 placeholder="Quantity"
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control">
               <label className="label">
@@ -125,7 +153,6 @@ const AddToy = () => {
                 placeholder="Toy Details"
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control md:col-span-2">
               <label className="label">
@@ -137,10 +164,11 @@ const AddToy = () => {
                 placeholder="Toy Photo"
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control mt-6 md:col-span-2">
-              <button className="btn w-full btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white">Add Toy</button>
+              <button className="btn w-full btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white">
+                Add Toy
+              </button>
             </div>
           </form>
         </div>

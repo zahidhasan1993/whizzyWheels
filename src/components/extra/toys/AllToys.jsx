@@ -8,6 +8,7 @@ const AllToys = () => {
 
   const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [search,setSearch] = useState(false);
 
   const toys = useLoaderData();
 
@@ -18,6 +19,7 @@ const AllToys = () => {
     const searchText = e.target.value;
     setSearchText(searchText);
     filterData(searchText);
+    setSearch(true)
   };
   const filterData = (searchText) => {
     const filteredData = toys.filter((item) =>
@@ -51,7 +53,7 @@ const AllToys = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredData
+          {search
             ? filteredData.map((toy) => (
                 <AlltoysTable key={toy._id} toy={toy}></AlltoysTable>
               ))
