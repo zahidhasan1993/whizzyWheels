@@ -12,7 +12,7 @@ const Registration = () => {
 
     TabTitle('Register | WhizzyWheels');
 
-    const {emailSignUp,googleSignUp} = useContext(DataProvider)
+    const {emailSignUp,googleSignUp,updateUser} = useContext(DataProvider)
 
 
     const defaultOptions = {
@@ -63,6 +63,9 @@ const Registration = () => {
                 showConfirmButton: false,
                 timer: 1500
               })
+              updateUser(result.user,name,photo)
+              .then(() => {})
+              .catch(() => {})
               form.reset()
             // console.log(result.user);
         })

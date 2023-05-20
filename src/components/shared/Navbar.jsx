@@ -198,7 +198,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {
-          hover ? <p className="mr-3">{user.displayName}</p> : <></>
+          hover ? <p className="mr-3 text-amber-700 font-bold">{user.displayName}</p> : <></>
         }
         {user ? (
           <>
