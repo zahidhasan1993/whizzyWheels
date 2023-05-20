@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../extra/Header';
 import Gallery from '../extra/Gallery';
 import { TabTitle } from '../changeTitle';
+import WhizzyTabs from '../extra/WhizzyTabs';
 
 
 const Home = () => {
@@ -10,7 +11,7 @@ const Home = () => {
         <div>
             <Header></Header>
             <Gallery></Gallery>
-            
+            <WhizzyTabs></WhizzyTabs>
             
         </div>
     );
