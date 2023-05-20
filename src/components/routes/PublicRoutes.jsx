@@ -10,46 +10,58 @@ import AllToys from "../extra/toys/AllToys";
 import AddToy from "../extra/toys/AddToy";
 import MyToy from "../extra/toys/MyToy";
 import CardToysDetails from "../extra/CardToysDetails";
-
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
-    {
-        path:'/',
-        element: <Main></Main>,
-        errorElement: <Error></Error>,
-        children: [
-            {
-                path: '/',
-                element: <Home></Home>
-            },
-            {
-                path: 'login',
-                element: <Login></Login>
-            },
-            {
-                path: 'register',
-                element: <Registration></Registration>
-            },
-            {
-                path: 'alltoys',
-                element: <AllToys></AllToys>
-            },
-            {
-                path: 'addtoys',
-                element: <AddToy></AddToy>
-            },
-            {
-                path: 'mytoys',
-                element: <MyToy></MyToy>
-            },
-            {
-                path: 'cardtoys/:id',
-                element: <CardToysDetails></CardToysDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/toycategory/${params.id}`)
-            }
-        ]
-    }
-])
-
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Registration></Registration>,
+      },
+      {
+        path: "alltoys",
+        element: (
+          <PrivateRoute>
+            <AllToys></AllToys>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "addtoys",
+        element: (
+          <PrivateRoute>
+            <AddToy></AddToy>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "mytoys",
+        element: (
+          <PrivateRoute>
+            <MyToy></MyToy>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "cardtoys/:id",
+        element: <CardToysDetails></CardToysDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/toycategory/${params.id}`),
+      },
+    ],
+  },
+]);
 
 export default router;
