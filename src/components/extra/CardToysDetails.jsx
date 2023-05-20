@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { TabTitle } from "../changeTitle";
 
 const CardToysDetails = () => {
@@ -47,9 +47,11 @@ const CardToysDetails = () => {
           Ratings: <span className="text-amber-700">{rating}</span>
         </p>
         <div className="card-actions justify-end">
+          <Link to='/'>
           <button className="btn btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white">
-            Buy
+            Back to home
           </button>
+          </Link>
         </div>
       </div>
     </div>
