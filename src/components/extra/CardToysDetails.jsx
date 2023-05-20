@@ -1,7 +1,9 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import { TabTitle } from "../changeTitle";
 
 const CardToysDetails = () => {
+  TabTitle("ToyDetails | WhizztWheels");
     const data = useLoaderData();
 
     const {_id,category, details, picture, price, rating, name} = data;
