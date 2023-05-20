@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Lottie from "react-lottie";
 import loginLottie from "../../assets/lotties/93385-login.json"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TabTitle } from "../changeTitle";
 import { DataProvider } from "../providers/AuthProvider";
 import Swal from 'sweetalert2'
@@ -12,8 +12,10 @@ import Swal from 'sweetalert2'
 const Login = () => {
 
   TabTitle('login | WhizzyWheels');
+  const location = useLocation();
   const navigate = useNavigate();
 
+  const from = location.state?.from?.pathname || '/';
   const {googleSignUp,signIn} = useContext(DataProvider);
 
   const handleGoogleSignIn = () => {
@@ -26,7 +28,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500
       })
-      navigate('/')
+      navigate(from, {replace: true });
     })
     .catch(error => {
       Swal.fire({
@@ -53,7 +55,7 @@ const Login = () => {
         timer: 1500
       })
       form.reset()
-      navigate('/')
+      navigate(from, {replace: true });
     })
     .catch(error => {
       Swal.fire({
