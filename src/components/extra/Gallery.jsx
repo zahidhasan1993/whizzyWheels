@@ -1,14 +1,10 @@
-import React from "react";
-// Import Swiper React components
+import React, { useEffect } from "react";
+import AOS from "aos";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-creative";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-
-// import required modules
 import {
   EffectFlip,
   EffectCards,
@@ -16,8 +12,15 @@ import {
   Pagination,
   Navigation 
 } from "swiper";
+import "aos/dist/aos.css";
+
 
 const Gallery = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000
+    });
+  }, []);
   return (
     <div className="my-11">
       <h1 className="text-3xl font-bold text-center text-amber-700 mt-10 mb-12 underline">
@@ -25,7 +28,7 @@ const Gallery = () => {
       </h1>
 
       <div className="md:grid md:grid-cols-2 md:gap-6">
-        <div className="border border-amber-700 border-8">
+        <div data-aos="fade-right" className="border-amber-700 border-8">
           <Swiper
              effect={"flip"}
              grabCursor={true}
@@ -64,7 +67,7 @@ const Gallery = () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="border border-amber-700 border-8">
+        <div data-aos="fade-left" className="border border-amber-700 border-8">
           <Swiper
             effect={"cards"}
             grabCursor={true}
@@ -94,7 +97,7 @@ const Gallery = () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="md:col-span-2 border border-amber-700 border-8">
+        <div data-aos="fade-up" className="md:col-span-2 border border-amber-700 border-8">
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
