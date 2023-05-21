@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: "cardtoys/:id",
+        path: "toydetails/:id",
         element: (
           <PrivateRoute>
             <CardToysDetails></CardToysDetails>

@@ -119,7 +119,7 @@ const Login = () => {
                 <button onClick={handleGoogleSignIn} className="btn w-full btn-outline text-green-700 hover:bg-green-700 hover:border-none hover:text-white mt-3">Login with google</button>
                 
               </div>
-              <p className="mt-6">New to <span className="font-bold">Whizzy<span className="text-amber-700">Wheels?.....</span></span> <Link to='/register' className="text-blue-700">Register First...</Link></p>
+              <p className="mt-6">New to <span className="font-bold">Whizzy<span className="text-amber-700">Wheels?.....</span></span> <Link to='/register' className="text-blue-700">Register First</Link></p>
             </form>
           </div>
         </div>

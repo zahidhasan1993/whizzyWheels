@@ -18,7 +18,7 @@ const TabToyCard = ({ data }) => {
           Ratings: <span className="text-amber-700">{rating}</span>
         </p>
         <div className="card-actions justify-end">
-          <Link to={`/cardtoys/${_id}`}>
+          <Link to={`/toydetails/${_id}`}>
             {" "}
             <button className="btn btn-outline text-amber-700 hover:bg-amber-700 hover:border-none hover:text-white">
               View Details

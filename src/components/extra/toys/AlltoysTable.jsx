@@ -32,7 +32,7 @@ const AlltoysTable = ({ toy }) => {
       <td>${price}</td>
       <td>{available_quantity}</td>
       <td>
-        <Link to={`/cardtoys/${_id}`}>
+        <Link to={`/toydetails/${_id}`}>
           {" "}
           <button className="btn btn-outline btn-xs text-amber-700 hover:bg-amber-700 hover:text-white">
             View Details
