@@ -12,6 +12,7 @@ import MyToy from "../extra/toys/MyToy";
 import CardToysDetails from "../extra/CardToysDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateToy from "../extra/toys/UpdateToy";
+import Blogs from "../extra/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -28,13 +29,17 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
+        path: "blogs",
+        element: <Blogs></Blogs>
+      },
+      {
         path: "register",
         element: <Registration></Registration>,
       },
       {
         path: "alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://whizzy-wheels-server.vercel.app/alltoys"),
+        loader: () => fetch("https://whizzy-wheels-server.vercel.app/alltoys"),
       },
       {
         path: "addtoys",
@@ -60,7 +65,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://whizzy-wheels-server.vercel.app/alltoys/${params.id}`),
+          fetch(`https://whizzy-wheels-server.vercel.app/alltoys/${params.id}`),
       },
       {
         path: "updatetoy/:id",
@@ -70,7 +75,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://whizzy-wheels-server.vercel.app/alltoys/${params.id}`),
+          fetch(`https://whizzy-wheels-server.vercel.app/alltoys/${params.id}`),
       },
     ],
   },

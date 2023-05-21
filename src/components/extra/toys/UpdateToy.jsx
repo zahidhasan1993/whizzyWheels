@@ -18,10 +18,10 @@ const UpdateToy = () => {
 
     console.log(toyData._id);
 
-    fetch(`http://whizzy-wheels-server.vercel.app/updatetoy/${toyData._id}`,{
-      method : "PUT",
+    fetch(`https://whizzy-wheels-server.vercel.app/updatetoy/${toyData._id}`,{
+      method : "PATCH",
       headers : {
-        'content-type': 'application/json',
+        'Content-type': 'application/json',
       },
       body : JSON.stringify(updatedToy)
 

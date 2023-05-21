@@ -10,7 +10,7 @@ const MyToy = () => {
   const {user} = useContext(DataProvider)
   const [toys,setToys] = useState([]);
   useEffect(() => {
-    fetch('http://whizzy-wheels-server.vercel.app/alltoys')
+    fetch('https://whizzy-wheels-server.vercel.app/alltoys')
     .then(res => res.json())
     .then(data => setToys(data))
   },[])
@@ -31,7 +31,7 @@ const MyToy = () => {
           'Your file has been deleted.',
           'success'
         )
-        fetch(`http://whizzy-wheels-server.vercel.app/delete/${_id}`,{
+        fetch(`https://whizzy-wheels-server.vercel.app/delete/${_id}`,{
           method: "DELETE",
     
         })

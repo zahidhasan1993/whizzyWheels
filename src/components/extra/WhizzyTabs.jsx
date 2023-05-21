@@ -10,7 +10,7 @@ const WhizzyTabs = () => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch("http://whizzy-wheels-server.vercel.app/alltoys")
+    fetch("https://whizzy-wheels-server.vercel.app/alltoys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
