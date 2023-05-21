@@ -31,7 +31,7 @@ const AllToys = () => {
     setFilteredData(filteredData);
   };
   const handleSortByPrice = () => {
-    fetch('http://localhost:5000/sort')
+    fetch('https://whizzy-wheels-server.vercel.app/sort')
     .then(res => res.json())
     .then(data => setToys(data))
   }
