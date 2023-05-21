@@ -1,14 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TabTitle } from "../../changeTitle";
 import { useLoaderData } from "react-router-dom";
 import { DataProvider } from "../../providers/AuthProvider";
 import MyToysTable from "./MyToysTable";
+import Swal from 'sweetalert2';
 
 const MyToy = () => {
   TabTitle("myToys | WhizzyWheels");
   const {user} = useContext(DataProvider)
-  const toys = useLoaderData();
-  const myToys = toys.filter(toy => toy.sellerEmail === user.email)
+  const [toys,setToys] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/alltoys')
+    .then(res => res.json())
+    .then(data => setToys(data))
+  },[])
+  const myToys = toys.filter(toy => toy.sellerEmail === user.email);
+  const handleDelete = (_id) => {
+    fetch(`http://localhost:5000/delete/${_id}`,{
+      method: "DELETE",
+
+    })
+    .then(res => res.json())
+    .then(data => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Toy Deleted Successful',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      const remaining = myToys.filter(toys => toys._id !== _id)
+      setToys(remaining)
+
+    })
+  }
 
 //   console.log(toys[1]);
 
@@ -32,7 +57,7 @@ const MyToy = () => {
           </thead>
           <tbody>
             {
-                myToys.map(toy => <MyToysTable key={toy._id} toy={toy}></MyToysTable>)
+                myToys.map(toy => <MyToysTable key={toy._id} handleDelete={handleDelete} toy={toy}></MyToysTable>)
             }
           </tbody>
         </table>

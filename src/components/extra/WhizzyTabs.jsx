@@ -21,11 +21,15 @@ const WhizzyTabs = () => {
       }
     );
   }, []);
+  let sport = "sports car";
+  let offRoad = "Off-Road Vehicle";
+  let vintage = "Vintage Car";
+  let convertable = "Convertible"
 
-  const sportsToys = toys.filter((toy) => toy.sub_category === "Sports Car");
-  const offRoadVehicle = toys.filter((toy) => toy.sub_category === "Off-Road Vehicle");
-  const vintageCar = toys.filter((toy) => toy.sub_category === "Vintage Car");
-  const Convertible = toys.filter((toy) => toy.sub_category === "Convertible")
+  const sportsToys = toys.filter((toy) => toy.sub_category.toLowerCase() === sport.toLowerCase());
+  const offRoadVehicle = toys.filter((toy) => toy.sub_category.toLowerCase() === offRoad.toLowerCase());
+  const vintageCar = toys.filter((toy) => toy.sub_category.toLowerCase() === vintage.toLowerCase());
+  const Convertible = toys.filter((toy) => toy.sub_category.toLowerCase() === convertable.toLowerCase())
 
   console.log(toys);
   return (

@@ -50,8 +50,7 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <MyToy></MyToy>
           </PrivateRoute>
-        ),
-        loader: () => fetch("http://localhost:5000/alltoys"),
+        )
       },
       {
         path: "cardtoys/:id",

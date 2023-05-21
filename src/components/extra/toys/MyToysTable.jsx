@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const MyToysTable = ({ toy }) => {
+
+const MyToysTable = ({ toy,handleDelete }) => {
   const {
     available_quantity,
     details,
@@ -14,6 +15,7 @@ const MyToysTable = ({ toy }) => {
     sub_category,
     _id,
   } = toy;
+  
   return (
     <tr>
       <td>
@@ -39,7 +41,12 @@ const MyToysTable = ({ toy }) => {
         </Link>
       </th>
       <th>
-        <button className="btn btn-outline btn-xs btn-error">Delete</button>
+        <button
+          onClick={()=>handleDelete(_id)}
+          className="btn btn-outline btn-xs btn-error"
+        >
+          Delete
+        </button>
       </th>
     </tr>
   );
