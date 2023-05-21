@@ -30,7 +30,7 @@ const AddToy = () => {
       picture,
     };
 
-    fetch('http://localhost:5000/addtoy', {
+    fetch('http://whizzy-wheels-server.vercel.app/addtoy', {
         method: "POST",
         headers: {
           'content-type': 'application/json',

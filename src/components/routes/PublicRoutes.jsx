@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: "alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/alltoys"),
+        loader: () => fetch("http://whizzy-wheels-server.vercel.app/alltoys"),
       },
       {
         path: "addtoys",
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/alltoys/${params.id}`),
+          fetch(`http://whizzy-wheels-server.vercel.app/alltoys/${params.id}`),
       },
       {
         path: "updatetoy/:id",
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/alltoys/${params.id}`),
+          fetch(`http://whizzy-wheels-server.vercel.app/alltoys/${params.id}`),
       },
     ],
   },

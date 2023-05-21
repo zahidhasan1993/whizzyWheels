@@ -18,7 +18,7 @@ const UpdateToy = () => {
 
     console.log(toyData._id);
 
-    fetch(`http://localhost:5000/updatetoy/${toyData._id}`,{
+    fetch(`http://whizzy-wheels-server.vercel.app/updatetoy/${toyData._id}`,{
       method : "PUT",
       headers : {
         'content-type': 'application/json',
