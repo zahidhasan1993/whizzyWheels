@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: "alltoys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("https://whizzy-wheels-server.vercel.app/alltoys"),
+        loader: () => fetch("https://whizzy-wheels-server.vercel.app/alltoys")
       },
       {
         path: "addtoys",

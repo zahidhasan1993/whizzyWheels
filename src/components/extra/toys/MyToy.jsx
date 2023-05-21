@@ -49,7 +49,7 @@ const MyToy = () => {
 //   console.log(toys[1]);
 
   return (
-    <div className="my-14">
+    <div className="mt-14 md:mb-96">
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
