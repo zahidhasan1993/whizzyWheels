@@ -18,6 +18,7 @@ const AddToy = () => {
     const rating = form.rating.value;
     const available_quantity = form.quantity.value;
     const picture = form.toyphoto.value;
+    const details = form.toydetails.value
 
     const newToy = {
       name,
@@ -26,6 +27,7 @@ const AddToy = () => {
       sub_category,
       price,
       rating,
+      details,
       available_quantity,
       picture,
     };
