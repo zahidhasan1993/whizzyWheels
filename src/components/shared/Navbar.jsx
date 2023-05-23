@@ -116,7 +116,7 @@ const Navbar = () => {
           </ul>
         </div>
         <img src={logo} className="w-14" alt="" />
-        <a className="btn btn-ghost normal-case text-xl">
+        <a className="hidden md:block btn btn-ghost normal-case text-xl">
           Whizzy<span className="text-amber-700">Wheels</span>
         </a>
       </div>
