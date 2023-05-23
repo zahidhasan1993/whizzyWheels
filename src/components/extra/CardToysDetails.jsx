@@ -20,8 +20,8 @@ const CardToysDetails = () => {
   } = data;
 
   return (
-    <div className="card card-side bg-base-100 shadow my-32">
-      <figure className="w-1/2">
+    <div className="card md:card-side bg-base-100 shadow my-32">
+      <figure className="md:w-1/2">
         <img src={picture} alt="CarToy" />
       </figure>
       <div className="card-body">
